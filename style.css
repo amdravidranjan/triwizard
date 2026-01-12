@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #2b1055, #000);
+    font-family: 'Cinzel', serif;
+    color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.scene {
+    min-height: 120vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.goblet-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.goblet {
+    width: 260px;
+    position: relative;
+    z-index: 1;
+    animation: float 4s ease-in-out infinite;
+}
+
+
+.fire {
+    position: absolute;
+    width: 150px;
+    
+    bottom: 90%;
+    
+    z-index: 2;
+    pointer-events: none;
+    filter:
+        drop-shadow(0 0 20px orange) drop-shadow(0 0 40px gold);
+    animation: flameRise 1.8s ease-in-out infinite;
+}
+
+
+button {
+    margin-top: 25px;
+    padding: 15px 40px;
+    font-size: 18px;
+    background: linear-gradient(45deg, #ff9800, #ff5722);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 0 25px orange;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px gold;
+}
+
+button.active {
+    animation: pulse 1s infinite;
+}
+
+
+.card {
+    margin-top: 30px;
+    padding: 25px;
+    width: 300px;
+    text-align: center;
+    background: #f5e6c8;
+    color: #2c1b10;
+    border-radius: 15px;
+    animation: reveal 1s ease forwards;
+    box-shadow: 0 0 30px rgba(255, 200, 100, 0.7);
+}
+
+.card img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.gryffindor {
+    box-shadow: 0 0 30px crimson;
+}
+
+.slytherin {
+    box-shadow: 0 0 30px green;
+}
+
+.ravenclaw {
+    box-shadow: 0 0 30px dodgerblue;
+}
+
+.hufflepuff {
+    box-shadow: 0 0 30px gold;
+}
+
+
+.embers {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.25) 2px, transparent 3px),
+        radial-gradient(circle at 70% 30%, rgba(255, 200, 0, 0.2) 1.5px, transparent 3px),
+        radial-gradient(circle at 40% 60%, rgba(255, 90, 0, 0.2) 2px, transparent 4px);
+    background-size: 200px 200px;
+    animation: emberMove 20s linear infinite;
+}
+
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+@keyframes flameRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translateY(-6px) scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 20px orange;
+    }
+
+    50% {
+        box-shadow: 0 0 50px gold;
+    }
+
+    100% {
+        box-shadow: 0 0 20px orange;
+    }
+}
+
+@keyframes emberMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 -1000px;
+    }
+}
